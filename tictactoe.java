@@ -101,13 +101,17 @@ public class tictactoe{
       boolean boardFull = false;
       System.out.println("Please enter a 1 or 2 to set which player goes first:");
       int playerTurn = scan.nextInt();
+      while(playerTurn != 1 && playerTurn != 2){
+         System.out.println("Invalid input, try again.");
+            playerTurn = scan.nextInt();
+      }
       String[] moves = {"_", "_", "_", "_", "_", "_", "_", "_", "_"};
       while(!boardFull){
          int temp;
          if(playerTurn == 1){
             System.out.println("Player 1's turn; enter a number from 1-9 to place an X on the grid:");
             temp = scan.nextInt();
-            while((temp > 9) || (temp < 1)){
+            while((temp > 9) || (temp < 1) || (moves[temp-1] != "_")){
                System.out.println("Invalid move, try again.");
                temp = scan.nextInt();
             }
@@ -123,7 +127,7 @@ public class tictactoe{
          else{
             System.out.println("Player 2's turn; enter a number from 1-9 to place an O on the grid:");
             temp = scan.nextInt();
-            while((temp > 9) || (temp < 1)){
+            while((temp > 9) || (temp < 1) || (moves[temp-1] != "_")){
                System.out.println("Invalid move, try again.");
                temp = scan.nextInt();
             }
